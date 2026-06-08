@@ -19,3 +19,9 @@ Ce dépôt est public pour que les sessions infonuagiques le clonent sans jeton.
 - Voix : français québécois, pas de tiret cadratin dans la prose.
 - Commits : conventional commits en français (`feat:`, `chore:`, `docs:`), trailer `Co-Authored-By: Claude <noreply@anthropic.com>`.
 - Versionner le plugin : bumper `version` dans `plugins/outils-gf/.claude-plugin/plugin.json` quand on veut que les dépôts branchés reçoivent la mise à jour.
+
+## Disponibilité des commandes dans le nuage
+
+Le menu `/` et le plugin sont peu fiables en session Claude Code infonuagique : le menu ne lit que la racine de session et ses dossiers parents, jamais les sous-dossiers, et le plugin se charge tard ou pas du tout. Le canal fiable, c'est le fichier d'instructions (`CLAUDE.md`), toujours lu au démarrage.
+
+Donc : les commandes de la boîte (`/recap`, `/closing-time`, `/mission`) sont définies dans ce dépôt, sous `plugins/outils-gf/commands/<nom>.md`. Si une de ces commandes est invoquée sans apparaître comme commande chargée, lire le fichier de définition correspondant et exécuter la routine telle qu'écrite, selon les conventions du dépôt courant. Ne jamais répondre « commande indisponible » : la définition est le contrat, le slash n'est que le raccourci.
