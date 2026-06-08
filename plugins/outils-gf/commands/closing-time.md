@@ -25,6 +25,15 @@ Commit le tout avec des messages clairs.
 ## 6. Archive
 Produis un récap daté de la conversation (façon `/recap` : ce qu'on a fait, les décisions, les questions en suspens, la prochaine action) et committe-le dans le journal de conversations de la mémoire versionnée, en créant la convention si elle n'existe pas (par exemple `operations/journal-conversations/AAAA-MM-DD-sujet.md`). Le but : garder une trace durable et cherchable de l'échange, pas seulement les deltas de mémoire.
 
+## 7. Tout sur main
+À la clôture, l'humain s'attend à ce que **tout ce qui a été produit dans la conversation finisse sur `main`** : tous les changements committés, et toutes les branches ouvertes pendant la conversation intégrées sur `main`, dans chaque dépôt touché. Rien ne reste en plan sur une branche de travail.
+
+C'est la dernière étape, après l'archive, pour que le récap parte lui aussi sur `main`. Pour chaque dépôt touché dans la session :
+
+- Tire `main` d'abord pour intégrer toute divergence et résoudre les conflits, puis amène la branche de travail sur `main` selon la convention du dépôt : commit direct et merge là où c'est l'usage (la mémoire versionnée), ou PR menée jusqu'au merge là où le dépôt l'exige (les dépôts de code). L'état visé est le même partout : `main` contient tout.
+- Pousse `main`, puis vérifie que `main` et la branche pointent sur le même commit et que l'arbre est propre.
+- Ne laisse aucune branche ouverte non intégrée, ni aucun changement non committé.
+
 Si un sujet est donné en argument ($ARGUMENTS), cible le récap d'archive là-dessus.
 
-À la fin, dis en clair à l'humain ce qui a été écrit et où, et ce qui reste à valider de son côté.
+À la fin, dis en clair à l'humain ce qui a été écrit et où, sur quels dépôts `main` a été mis à jour, et ce qui reste à valider de son côté.
