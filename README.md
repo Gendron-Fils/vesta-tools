@@ -45,7 +45,16 @@ Note sur le nom de la commande : les commandes de plugin sont **préfixées par 
 
 ## Ajouter un outil plus tard
 
-Le geste est unique : déposer **un fichier de plus** dans `plugins/outils-gf/commands/` (par exemple `monday-brief.md`), committer, pousser sur `main`. Tous les dépôts branchés l'ont au prochain démarrage de session (un rafraîchissement du marketplace peut être nécessaire). Pas besoin de toucher aux dépôts un par un.
+Le geste de base est unique : déposer **un fichier de plus** dans `plugins/outils-gf/commands/` (par exemple `monday-brief.md`), committer, pousser sur `main`. Côté plugin, tous les dépôts branchés le voient au prochain démarrage de session (un rafraîchissement du marketplace peut être nécessaire).
+
+Pour aussi propager le filet committé qui garantit la commande dans les sessions nuage, lancer le script de synchronisation depuis ce dépôt :
+
+```bash
+scripts/sync-commands.sh --dry-run   # aperçu : montre ce qui changerait
+scripts/sync-commands.sh             # recopie dans le .claude/commands/ des dépôts branchés
+```
+
+Le script recopie toutes les commandes de `outils-gf` vers le `.claude/commands/` des dépôts branchés (il trouve les dépôts à côté de `vesta-tools`, en local comme dans le nuage). Le cerveau `vesta` est volontairement exclu (pointeur seulement). Il est additif et idempotent : il ajoute et met à jour, jamais ne supprime. Après coup, committer le `.claude/commands/` de chaque dépôt modifié et ouvrir une PR vers `main` (le script affiche la liste des dépôts touchés).
 
 ## Voix et règle d'or
 
