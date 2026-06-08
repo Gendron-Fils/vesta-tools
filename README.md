@@ -17,7 +17,9 @@ vesta-tools/
         ├── .claude-plugin/
         │   └── plugin.json
         └── commands/
-            └── recap.md          # la commande /recap
+            ├── recap.md          # la commande /recap
+            ├── closing-time.md   # la commande /closing-time
+            └── mission.md        # la commande /mission
 ```
 
 - **Marketplace** : `gendron-tools`
