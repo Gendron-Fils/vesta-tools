@@ -1,0 +1,15 @@
+{
+  "name": "gendron-tools",
+  "owner": {
+    "name": "Gendron & Fils",
+    "email": "info@gendronfils.ca"
+  },
+  "description": "Boîte à outils Claude Code partagée de Gendron & Fils. Catalogue public, aucune donnée sensible.",
+  "plugins": [
+    {
+      "name": "outils-gf",
+      "source": "./plugins/outils-gf",
+      "description": "Commandes génériques partagées de Gendron & Fils (à commencer par /recap)."
+    }
+  ]
+}
