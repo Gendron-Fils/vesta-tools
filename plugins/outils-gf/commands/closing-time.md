@@ -1,0 +1,30 @@
+---
+description: Clôt la conversation : fait la routine de fin de session (mémoire, validation, backlog, rétro) puis archive un récap daté committé
+argument-hint: [sujet optionnel pour cibler le récap d'archive]
+---
+
+La conversation est terminée. Fais la routine de fin de session selon les conventions de CE dépôt (son `CLAUDE.md` et la mémoire versionnée qu'il référence), puis archive un récap. Français québécois, factuel, pas de tiret cadratin dans la prose.
+
+Avant d'écrire quoi que ce soit, vérifie l'état réel (la mémoire à jour, ce qui est déjà committé) pour ne pas créer de doublon. Ne pose un geste que si le dépôt a la convention correspondante ; sinon, dis-le et propose plutôt que d'inventer.
+
+## 1. Mémoire
+Si une décision stratégique a été prise, inscris-la dans la mémoire vivante du dépôt (l'état courant ou le backlog selon la convention).
+
+## 2. File de validation
+Si tu as finalisé du matériel qu'un humain devrait relire, ajoute une entrée dans la file de validation du dépôt : date, document, quoi regarder.
+
+## 3. Backlog
+Dépose les « à penser plus tard » de la conversation dans la boîte d'entrée du backlog, datés.
+
+## 4. Rétrospective
+Si c'était un mandat de conception ou de construction significatif, dépose une rétrospective dans le journal prévu, et promeus vers la charte ce qui se confirme. Si c'est déjà fait dans la conversation, ne le refais pas.
+
+## 5. Commit
+Commit le tout avec des messages clairs.
+
+## 6. Archive
+Produis un récap daté de la conversation (façon `/recap` : ce qu'on a fait, les décisions, les questions en suspens, la prochaine action) et committe-le dans le journal de conversations de la mémoire versionnée, en créant la convention si elle n'existe pas (par exemple `operations/journal-conversations/AAAA-MM-DD-sujet.md`). Le but : garder une trace durable et cherchable de l'échange, pas seulement les deltas de mémoire.
+
+Si un sujet est donné en argument ($ARGUMENTS), cible le récap d'archive là-dessus.
+
+À la fin, dis en clair à l'humain ce qui a été écrit et où, et ce qui reste à valider de son côté.
