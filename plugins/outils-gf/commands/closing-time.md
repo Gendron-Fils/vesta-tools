@@ -10,13 +10,8 @@ Avant d'écrire quoi que ce soit, vérifie l'état réel (la mémoire à jour, c
 ## 1. Mémoire
 Si une décision stratégique a été prise, inscris-la dans la mémoire vivante du dépôt (l'état courant ou le backlog selon la convention).
 
-## 2. Les files de l'humain : tâches à faire et décisions à prendre
-Sépare ce que l'humain doit faire de ce qu'il doit trancher, et inscris chaque chose dans la file prévue du dépôt. Le but : que ses tâches apparaissent dans son visage employé et ses décisions dans son visage dirigeant.
-
-- **Tâches à faire** (les actions concrètes que l'humain a à poser) : une entrée par tâche, datée, avec quoi faire et le pointeur vers le document.
-- **Décisions à prendre et matériel à relire** : une entrée dans la file de validation, datée, avec quoi regarder et le document.
-
-Une entrée ne va que dans une file : une action n'est pas une décision. Si une de ces files n'existe pas encore dans le dépôt, propose la convention plutôt que d'inventer en silence.
+## 2. Tâches et décisions pour l'humain
+Si la conversation a laissé à l'humain des choses à faire ou à trancher (une action à poser, du matériel à relire, une décision à prendre), ajoute-les à la file que le dépôt utilise déjà pour ça, celle qui alimente son tableau de bord. Une entrée par item : date, quoi faire ou quoi regarder, et le pointeur vers le document. N'invente pas de nouvelle liste si le dépôt en a déjà une.
 
 ## 3. Backlog
 Dépose les « à penser plus tard » de la conversation dans la boîte d'entrée du backlog, datés.
