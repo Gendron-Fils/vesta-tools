@@ -56,7 +56,7 @@ scripts/sync-commands.sh --dry-run   # aperçu : montre ce qui changerait
 scripts/sync-commands.sh             # recopie dans le .claude/commands/ des dépôts branchés
 ```
 
-Le script recopie toutes les commandes de `outils-gf` vers le `.claude/commands/` des dépôts branchés (il trouve les dépôts à côté de `vesta-tools`, en local comme dans le nuage). Le cerveau `vesta` est volontairement exclu (pointeur seulement). Il est additif et idempotent : il ajoute et met à jour, jamais ne supprime. Après coup, committer le `.claude/commands/` de chaque dépôt modifié et ouvrir une PR vers `main` (le script affiche la liste des dépôts touchés).
+Le script recopie toutes les commandes de `outils-gf` vers le `.claude/commands/` des dépôts branchés (il trouve les dépôts à côté de `vesta-tools`, en local comme dans le nuage). La mémoire `vesta` est volontairement exclue (pointeur seulement). Elle est additive et idempotente : elle ajoute et met à jour, jamais ne supprime. Après coup, committer le `.claude/commands/` de chaque dépôt modifié et ouvrir une PR vers `main` (le script affiche la liste des dépôts touchés).
 
 ## Voix et règle d'or
 

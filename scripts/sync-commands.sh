@@ -8,7 +8,7 @@
 # la librairie canonique (on définit un outil une fois ici) ; ce script propage le
 # filet committé qui garantit /recap (et les futurs outils) dans le nuage.
 #
-# Le cerveau « vesta » est VOLONTAIREMENT EXCLU : il reste pointeur seulement,
+# La mémoire « vesta » est VOLONTAIREMENT EXCLUE : elle reste pointeur seulement,
 # jamais d'outillage committé dedans.
 #
 # Usage :
@@ -28,7 +28,7 @@ SRC="$SCRIPT_DIR/../plugins/outils-gf/commands"
 # Dossier parent des dépôts (par défaut : le parent de vesta-tools).
 BASE_DIR="${BASE_DIR:-$(cd "$SCRIPT_DIR/../.." && pwd)}"
 
-# Dépôts branchés qui reçoivent le filet de commandes. Le cerveau « vesta » est exclu.
+# Dépôts branchés qui reçoivent le filet de commandes. La mémoire « vesta » est exclue.
 REPOS=(vesta-app coup-doeil seo-audit seo-audit-app website website-designer)
 
 DRY_RUN=0

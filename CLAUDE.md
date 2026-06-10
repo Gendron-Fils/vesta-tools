@@ -10,7 +10,7 @@ Ce dépôt est public pour que les sessions infonuagiques le clonent sans jeton.
 
 - **Aucun secret.** Jamais de clé, de jeton, de mot de passe, même en exemple réaliste.
 - **Aucun contenu propriétaire.** Pas de voix de marque détaillée codée en dur, pas de mémoire stratégique, pas de données client. Seulement des commandes génériques réutilisables.
-- En cas de doute sur le caractère sensible d'un ajout, il ne va pas ici. Le cerveau `Gendron-Fils/vesta` (privé) est l'endroit pour le propriétaire.
+- En cas de doute sur le caractère sensible d'un ajout, il ne va pas ici. La mémoire `Gendron-Fils/vesta` (privée) est l'endroit pour le propriétaire.
 
 ## Conventions
 
