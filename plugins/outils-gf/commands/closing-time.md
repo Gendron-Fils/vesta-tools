@@ -8,7 +8,7 @@ La conversation est terminée. Fais la routine de fin de session selon les conve
 Avant d'écrire quoi que ce soit, vérifie l'état réel (la mémoire à jour, ce qui est déjà committé) pour ne pas créer de doublon. Ne pose un geste que si le dépôt a la convention correspondante ; sinon, dis-le et propose plutôt que d'inventer.
 
 ## 1. Mémoire
-Si une décision stratégique a été prise, inscris-la dans la mémoire vivante du dépôt (l'état courant ou le backlog selon la convention).
+Si une décision stratégique a été prise, inscris-la dans la mémoire évolutive du dépôt (l'état courant ou le backlog selon la convention).
 
 ## 2. Tâches et décisions pour l'humain
 Si la conversation a laissé à l'humain des choses à faire ou à trancher (une action à poser, du matériel à relire, une décision à prendre), ajoute-les à la file que le dépôt utilise déjà pour ça, celle qui alimente son tableau de bord. Une entrée par item : date, quoi faire ou quoi regarder, et le pointeur vers le document. N'invente pas de nouvelle liste si le dépôt en a déjà une.
