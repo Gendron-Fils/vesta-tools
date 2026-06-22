@@ -49,10 +49,12 @@ Embarque verbatim tout contexte que l'agent ne pourra pas voir autrement (le pon
 ### 3. Sauvegarde et committe
 Dépose le fichier à l'endroit conventionnel du dépôt pour les ordres de mission (un dossier `prompts/` ou l'équivalent), sous un nom descriptif, et committe-le. Si la convention n'existe pas, propose l'emplacement plutôt que d'inventer en silence.
 
-### 4. Produis la ligne de lancement
-Termine par la courte ligne que l'humain copiera pour lancer l'autre agent, dans le format d'amorce du dépôt. Sa forme :
+### 4. Dispatche et pilote (le défaut), ligne de lancement en repli
+Par défaut, ne te contente pas de tendre un prompt à coller : la session courante dispatche elle-même la mission à un sous-agent et la pilote. Un sous-agent par mission (une tâche, une branche, une PR), au modèle recommandé dans l'en-tête. Dispatche en parallèle les missions qui ne se chevauchent pas ; garde pour la fin celle qui doit attendre une autre ou entrerait en collision. Pour une mission structurelle ou risquée (URL publiques, schéma, argent, suppression, irréversible), le sous-agent s'arrête à son plan et te le remonte ; tu le relaies à l'humain et tu attends son GO avant de dire « continue ». Une mission réversible à faible risque roule d'un trait jusqu'à la PR et au merge.
+
+Garde toujours le repli : le fichier déposé et la courte ligne de lancement, pour un lancement manuel quand l'humain préfère, ou quand l'environnement courant n'atteint pas la cible (par exemple une mission strictement locale lancée depuis le nuage). Forme de la ligne :
 
 > `[persona d'amorce du dépôt]. Lis et exécute la mission [chemin du fichier créé] dans le dépôt [org/dépôt] (branche [branche]). Suis-la au complet, y compris la rétrospective à la fin.`
 
 ### 5. Rends compte
-Dis où le fichier est rangé, donne la ligne de lancement prête à copier, et signale ce qui reste à décider avant de lancer (le cas échéant).
+Dis où le fichier est rangé, quelles missions ont été dispatchées et leur état (en cours, en attente du GO de l'humain sur un plan, ou à lancer à la main), donne la ligne de lancement en repli, et signale ce qui reste à décider.
