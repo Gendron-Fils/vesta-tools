@@ -1,7 +1,7 @@
 {
   "name": "outils-gf",
   "description": "Boîte à outils Claude Code partagée de Gendron & Fils. Commandes génériques réutilisables dans tous les dépôts.",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "author": {
     "name": "Gendron & Fils",
     "email": "info@gendronfils.ca"
