@@ -34,4 +34,4 @@ La réponse est `{ "resultats": [ { "chemin": "...", "extrait": "..." }, ... ] }
 2. Ouvre les fichiers les plus pertinents depuis le clone local de la mémoire (lecture), pour bâtir ta réponse sur le vrai contenu, pas seulement l'extrait.
 3. Si l'index ne rend rien (vide parce que pas encore réindexé, ou endpoint injoignable), dis-le franchement et retombe sur une recherche locale (`rg -i` sur le clone de la mémoire) en le signalant. Ne fais jamais semblant d'avoir cherché l'index si tu ne l'as pas atteint.
 
-Note : sans les secrets dans `.secrets/`, ou tant que l'index n'a pas été réindexé une première fois (`POST /api/reindex-memoire`), cette commande retombe sur la recherche locale. C'est non cassant : elle dégrade proprement, elle ne ment pas.
+Note : sans les secrets dans `.secrets/`, ou tant que l'index n'a pas été réindexé une première fois (cron quotidien `/api/cron/reindex-memoire`, ou déclenchement manuel avec le même Bearer), cette commande retombe sur la recherche locale. C'est non cassant : elle dégrade proprement, elle ne ment pas.
