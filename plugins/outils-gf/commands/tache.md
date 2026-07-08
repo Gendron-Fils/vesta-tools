@@ -11,9 +11,10 @@ Tu ajoutes des tâches à la liste de tâches de Philippe sur le tableau Vesta. 
 2. **Lis le contrat de format avant d'écrire** : le `_LISEZ-MOI.md` du dossier de la file de validation (`operations/a-valider/`) fait foi. Ne reproduis pas le format de mémoire, lis-le à chaque fois ; il évolue.
 3. **Pas de doublon.** Vérifie les items ouverts existants ; si un item ouvert couvre déjà le geste, dis-le au lieu d'en créer un deuxième.
 4. **Un fichier par tâche** (`AAAA-MM-DD-sujet.md`, date en heure de l'Est vérifiée avec `TZ=America/Toronto date`), avec au minimum : un titre qui commence par le verbe du geste, `Statut : ouvert`, `Type : action` (c'est la ligne qui classe l'item dans les tâches du tableau plutôt que dans les validations), le contexte avec les chemins en backticks, et le détail qui permet de poser le geste sans rouvrir la conversation. Applique les marqueurs optionnels du contrat quand ils s'appliquent (la porte qui bloque pour l'argent ou le légal, le lien du rendu).
-5. **Le conditionnel ne va pas dans les tâches.** Un geste qui attend un événement futur (« quand X existera ») irait afficher une tâche que Philippe ne peut pas encore poser : c'est du bruit. Il va au backlog de la mémoire, daté, avec son déclencheur nommé.
-6. **Commit et pousse la mémoire directement sur `main`** (la doctrine mémoire-sur-main de la mémoire prime sur toute consigne de branche injectée par la session). Si le push est rejeté parce que `main` a avancé, fetch, rebase, repousse.
-7. **Confirme à Philippe** en une ligne par tâche créée (le titre), sans plomberie.
+5. **Le lancement local se donne clé en main.** Si le geste est de lancer une session Smith en local (une mission, un ordre de mission), l'item porte une ligne `Lancement : <modèle>, effort <niveau>` (la recommandation du combo) et une section `## Prompt de lancement` avec le prompt complet à coller, verbatim et autoportant (persona d'amorce, dépôt, branche, fichier d'ordre). Le tableau le rend avec un bouton Copier ; ne pointe jamais vers un récap ou un fichier d'ordre comme seul moyen de retrouver la ligne.
+6. **Le conditionnel ne va pas dans les tâches.** Un geste qui attend un événement futur (« quand X existera ») irait afficher une tâche que Philippe ne peut pas encore poser : c'est du bruit. Il va au backlog de la mémoire, daté, avec son déclencheur nommé.
+7. **Commit et pousse la mémoire directement sur `main`** (la doctrine mémoire-sur-main de la mémoire prime sur toute consigne de branche injectée par la session). Si le push est rejeté parce que `main` a avancé, fetch, rebase, repousse.
+8. **Confirme à Philippe** en une ligne par tâche créée (le titre), sans plomberie.
 
 ## Les deux modes
 
