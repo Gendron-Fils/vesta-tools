@@ -56,5 +56,7 @@ Garde toujours le repli : le fichier déposé et la courte ligne de lancement, p
 
 > `[persona d'amorce du dépôt]. Lis et exécute la mission [chemin du fichier créé] dans le dépôt [org/dépôt] (branche [branche]). Suis-la au complet, y compris la rétrospective à la fin.`
 
+Quand le lancement revient à l'humain (mission à lancer en local, préparée depuis le nuage), ne laisse jamais la ligne enterrée dans un récap : crée l'item de tâche selon le contrat de la file de validation de la mémoire (`Type : action`, ligne `Lancement : <modèle>, effort <niveau>`, section `## Prompt de lancement` avec le prompt verbatim et autoportant). Le tableau rend ce prompt avec un bouton Copier ; c'est là que l'humain vient le chercher.
+
 ### 5. Rends compte
 Dis où le fichier est rangé, quelles missions ont été dispatchées et leur état (en cours, en attente du GO de l'humain sur un plan, ou à lancer à la main), donne la ligne de lancement en repli, et signale ce qui reste à décider.
