@@ -19,7 +19,9 @@ vesta-tools/
         └── commands/
             ├── recap.md          # la commande /recap
             ├── closing-time.md   # la commande /closing-time
-            └── mission.md        # la commande /mission
+            ├── mission.md        # la commande /mission
+            ├── chercher.md       # la commande /chercher
+            └── tache.md          # la commande /tache
 ```
 
 - **Marketplace** : `gendron-tools`
