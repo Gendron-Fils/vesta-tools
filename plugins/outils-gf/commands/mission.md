@@ -18,13 +18,16 @@ Repère le fichier d'ordre désigné. S'il vit dans un autre dépôt ou sur une 
 ### 2. Charge le contexte et le persona
 Avant d'agir, lis ce que la mission te dit de lire et adopte le persona de développement du dépôt s'il en définit un : sa charte de firme, ses conventions dans le `CLAUDE.md`, la mémoire versionnée qu'il référence. L'ordre de mission est la source : son modèle recommandé, son périmètre, ses garde-fous et sa définition de « fini » priment. Tu t'adaptes à l'état réel du dépôt sur sa branche, jamais l'inverse.
 
-### 3. Exécute au complet
+### 3. Marque le départ (la carte passe en cours)
+Si un item de tâche t'a lancé (ton prompt le nomme, même mécanique que la fermeture de l'étape 5), flippe-le `Statut : en cours depuis le AAAA-MM-DD` (la date du jour), avec une ligne `Session : <lien de la session courante>` quand ce lien est connaissable (en session infonuagique, il figure dans les instructions du harnais ; en local, omets la ligne). Fais ce flip dans TON PREMIER commit mémoire de la mission, avant de plonger dans le reste : c'est ce qui rend le travail visible au tableau de l'humain pendant qu'il roule, plutôt que de laisser la carte dire encore « à faire » jusqu'à la fin. Réservé aux items `Type : action` ; n'y touche jamais pour un item de validation. Sans item de lancement identifiable, saute cette étape sans y revenir.
+
+### 4. Exécute au complet
 Suis la mission de bout en bout, dans l'ordre qu'elle pose (le risque le plus haut d'abord si elle le demande). Respecte la discipline du dépôt : worktree et PR quand c'est la règle, commits clairs (conventional commits avec le trailer prévu), migrations additives et idempotentes, jamais de destructif sans autorisation. Un secret dans le diff bloque tout. Quand la mission tranche déjà une décision, applique-la ; quand une vraie ambiguïté hors périmètre surgit, expose le risque et demande avant d'agir.
 
-### 4. Ferme la boucle (la rétrospective, et la tâche qui t'a lancé)
-Une mission n'est pas finie tant que la rétrospective n'est pas écrite. Dépose-la à l'endroit prévu par le dépôt (le journal de rétrospectives de sa firme de développement) et promeus vers la charte ce qui se confirme. Inscris aussi ce que les conventions demandent : file de validation pour ce qu'un humain devrait relire, backlog pour les « à penser plus tard », datés. Puis ferme la tâche de lancement : si un item de tâche t'a lancé (ton prompt le nomme), ou si un item ouvert de la file porte un `## Prompt de lancement` qui vise ce fichier d'ordre, flippe-le dans la même passe de mémoire (statut selon le contrat du dossier, section de validation avec les références : PR, commit, récap). Une mission exécutée dont la carte reste « à faire » est une tâche zombie au tableau de l'humain.
+### 5. Ferme la boucle (la rétrospective, et la tâche qui t'a lancé)
+Une mission n'est pas finie tant que la rétrospective n'est pas écrite. Dépose-la à l'endroit prévu par le dépôt (le journal de rétrospectives de sa firme de développement) et promeus vers la charte ce qui se confirme. Inscris aussi ce que les conventions demandent : file de validation pour ce qu'un humain devrait relire, backlog pour les « à penser plus tard », datés. Puis ferme la tâche de lancement : si un item de tâche t'a lancé (ton prompt le nomme), ou si un item ouvert ou en cours de la file porte un `## Prompt de lancement` qui vise ce fichier d'ordre, flippe-le dans la même passe de mémoire (statut selon le contrat du dossier, section de validation avec les références : PR, commit, récap). Une mission exécutée dont la carte reste « à faire » ou « en cours » est une tâche zombie au tableau de l'humain.
 
-### 5. Rends compte
+### 6. Rends compte
 Dis en clair ce qui a été livré, ce qui a été committé et où, ce qui reste à valider du côté humain, la prochaine action recommandée. Reprends la définition de « fini » point par point et confirme chaque élément avant de te déclarer arrivé.
 
 ## B. Rédiger un nouvel ordre de mission (déléguer)
