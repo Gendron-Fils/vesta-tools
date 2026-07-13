@@ -21,8 +21,8 @@ Avant d'agir, lis ce que la mission te dit de lire et adopte le persona de déve
 ### 3. Exécute au complet
 Suis la mission de bout en bout, dans l'ordre qu'elle pose (le risque le plus haut d'abord si elle le demande). Respecte la discipline du dépôt : worktree et PR quand c'est la règle, commits clairs (conventional commits avec le trailer prévu), migrations additives et idempotentes, jamais de destructif sans autorisation. Un secret dans le diff bloque tout. Quand la mission tranche déjà une décision, applique-la ; quand une vraie ambiguïté hors périmètre surgit, expose le risque et demande avant d'agir.
 
-### 4. Ferme la boucle (la rétrospective)
-Une mission n'est pas finie tant que la rétrospective n'est pas écrite. Dépose-la à l'endroit prévu par le dépôt (le journal de rétrospectives de sa firme de développement) et promeus vers la charte ce qui se confirme. Inscris aussi ce que les conventions demandent : file de validation pour ce qu'un humain devrait relire, backlog pour les « à penser plus tard », datés.
+### 4. Ferme la boucle (la rétrospective, et la tâche qui t'a lancé)
+Une mission n'est pas finie tant que la rétrospective n'est pas écrite. Dépose-la à l'endroit prévu par le dépôt (le journal de rétrospectives de sa firme de développement) et promeus vers la charte ce qui se confirme. Inscris aussi ce que les conventions demandent : file de validation pour ce qu'un humain devrait relire, backlog pour les « à penser plus tard », datés. Puis ferme la tâche de lancement : si un item de tâche t'a lancé (ton prompt le nomme), ou si un item ouvert de la file porte un `## Prompt de lancement` qui vise ce fichier d'ordre, flippe-le dans la même passe de mémoire (statut selon le contrat du dossier, section de validation avec les références : PR, commit, récap). Une mission exécutée dont la carte reste « à faire » est une tâche zombie au tableau de l'humain.
 
 ### 5. Rends compte
 Dis en clair ce qui a été livré, ce qui a été committé et où, ce qui reste à valider du côté humain, la prochaine action recommandée. Reprends la définition de « fini » point par point et confirme chaque élément avant de te déclarer arrivé.
@@ -56,7 +56,7 @@ Garde toujours le repli : le fichier déposé et la courte ligne de lancement, p
 
 > `[persona d'amorce du dépôt]. Lis et exécute la mission [chemin du fichier créé] dans le dépôt [org/dépôt] (branche [branche]). Suis-la au complet, y compris la rétrospective à la fin.`
 
-Quand le lancement revient à l'humain (mission à lancer en local, préparée depuis le nuage), ne laisse jamais la ligne enterrée dans un récap : crée l'item de tâche selon le contrat de la file de validation de la mémoire (`Type : action`, ligne `Lancement : <modèle>, effort <niveau>`, section `## Prompt de lancement` avec le prompt verbatim et autoportant). Le tableau rend ce prompt avec un bouton Copier ; c'est là que l'humain vient le chercher.
+Quand le lancement revient à l'humain (mission à lancer en local, préparée depuis le nuage), ne laisse jamais la ligne enterrée dans un récap : crée l'item de tâche selon le contrat de la file de validation de la mémoire (`Type : action`, ligne `Lancement : <modèle>, effort <niveau>`, section `## Prompt de lancement` avec le prompt verbatim et autoportant). Le tableau rend ce prompt avec un bouton Copier ; c'est là que l'humain vient le chercher. Termine toujours le prompt par l'instruction de fermer ce même item à la fin de la mission (le chemin exact du fichier-item), pour que la carte ne survive pas au travail accompli.
 
 ### 5. Rends compte
 Dis où le fichier est rangé, quelles missions ont été dispatchées et leur état (en cours, en attente du GO de l'humain sur un plan, ou à lancer à la main), donne la ligne de lancement en repli, et signale ce qui reste à décider.
