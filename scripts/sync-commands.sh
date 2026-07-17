@@ -8,8 +8,9 @@
 # la librairie canonique (on définit un outil une fois ici) ; ce script propage le
 # filet committé qui garantit /recap (et les futurs outils) dans le nuage.
 #
-# La mémoire « vesta » est VOLONTAIREMENT EXCLUE : elle reste pointeur seulement,
-# jamais d'outillage committé dedans.
+# Les dépôts-mémoire « vesta » et « vesta-intern » (corpus de la vitrine) sont
+# VOLONTAIREMENT EXCLUS : une mémoire reste pointeur seulement, jamais
+# d'outillage committé dedans (exclusion de vesta-intern explicitée le 2026-07-17).
 #
 # Usage :
 #   scripts/sync-commands.sh            # recopie vers tous les dépôts trouvés
@@ -28,8 +29,8 @@ SRC="$SCRIPT_DIR/../plugins/outils-gf/commands"
 # Dossier parent des dépôts (par défaut : le parent de vesta-tools).
 BASE_DIR="${BASE_DIR:-$(cd "$SCRIPT_DIR/../.." && pwd)}"
 
-# Dépôts branchés qui reçoivent le filet de commandes. La mémoire « vesta » est exclue.
-REPOS=(vesta-app coup-doeil seo-audit seo-audit-app website website-designer)
+# Dépôts branchés qui reçoivent le filet de commandes. Les dépôts-mémoire (vesta, vesta-intern) sont exclus.
+REPOS=(vesta-app coup-doeil seo-audit seo-audit-app website website-designer atelier-memoire)
 
 DRY_RUN=0
 if [ "${1:-}" = "--dry-run" ] || [ "${1:-}" = "-n" ]; then
