@@ -18,7 +18,7 @@ Ce dépôt est public pour que les sessions infonuagiques le clonent sans jeton.
 - Une commande = un fichier `plugins/outils-gf/commands/<nom>.md`, frontmatter `description` et `argument-hint` optionnel.
 - Voix : français québécois, pas de tiret cadratin dans la prose.
 - Commits : conventional commits en français (`feat:`, `chore:`, `docs:`), trailer `Co-Authored-By: Claude <noreply@anthropic.com>`.
-- Versionner le plugin : bumper `version` dans `plugins/outils-gf/.claude-plugin/plugin.json` quand on veut que les dépôts branchés reçoivent la mise à jour.
+- Versionner le plugin : bumper `version` dans `plugins/outils-gf/.claude-plugin/plugin.json` quand on veut que les dépôts branchés reçoivent la mise à jour. **Un bump n'est fini que propagé** : rouler `scripts/sync-commands.sh` et merger les PR de sync dans la foulée, sinon les copies vendorisées divergent en silence (dérive attrapée le 2026-07-17 : maîtres à 0.11.0, copies à 0.9.0 pendant 4 jours).
 
 ## Disponibilité des commandes dans le nuage
 
