@@ -1,5 +1,5 @@
 ---
-description: Prépare ou exécute un ordre de mission. Sans cible existante, rédige un nouvel ordre de mission pour déléguer un bout de travail à un autre agent et produit la ligne de lancement à donner. Avec un fichier d'ordre existant, lit et exécute la mission au complet jusqu'à la rétrospective.
+description: Prépare (rédige et dispatche) ou exécute un ordre de mission au complet, jusqu'à la rétrospective
 argument-hint: [chemin d'un ordre existant à exécuter | description du bout à déléguer]
 ---
 
@@ -59,7 +59,7 @@ Garde toujours le repli : le fichier déposé et la courte ligne de lancement, p
 
 > `[persona d'amorce du dépôt]. Lis et exécute la mission [chemin du fichier créé] dans le dépôt [org/dépôt] (branche [branche]). Suis-la au complet, y compris la rétrospective à la fin.`
 
-Quand le lancement revient à l'humain (mission à lancer en local, préparée depuis le nuage), ne laisse jamais la ligne enterrée dans un récap : crée l'item de tâche selon le contrat de la file de validation de la mémoire (`Type : action`, ligne `Lancement : <modèle>, effort <niveau>`, section `## Prompt de lancement` avec le prompt verbatim et autoportant). Le tableau rend ce prompt avec un bouton Copier ; c'est là que l'humain vient le chercher. Termine toujours le prompt par l'instruction de fermer ce même item à la fin de la mission (le chemin exact du fichier-item), pour que la carte ne survive pas au travail accompli.
+Quand le lancement revient à l'humain (mission à lancer en local, préparée depuis le nuage), ne laisse jamais la ligne enterrée dans un récap : crée l'item de tâche selon la règle « le lancement local se donne clé en main » de la commande `/tache` (le contrat de format vit dans le `_LISEZ-MOI.md` de la file de validation), y compris le prompt qui embarque sa propre fermeture, pour que la carte ne survive pas au travail accompli.
 
 ### 5. Rends compte
 Dis où le fichier est rangé, quelles missions ont été dispatchées et leur état (en cours, en attente du GO de l'humain sur un plan, ou à lancer à la main), donne la ligne de lancement en repli, et signale ce qui reste à décider.
