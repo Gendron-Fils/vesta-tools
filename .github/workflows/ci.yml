@@ -1,0 +1,36 @@
+name: CI
+
+# Mini-filet : ce depot est du Markdown + un plugin, rien a typechecker ni a
+# tester. Le seul risque reel est un manifest JSON casse ou une commande
+# maitre disparue sans que personne s'en rende compte (dependance de 7 depots
+# de code + la memoire vesta qui vendorisent ces commandes).
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  verifier:
+    name: Manifests JSON + commandes maitres
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Marketplace et plugin.json sont du JSON valide
+        run: |
+          jq empty .claude-plugin/marketplace.json
+          jq empty plugins/outils-gf/.claude-plugin/plugin.json
+      - name: Les 5 commandes maitres existent
+        run: |
+          for commande in chercher closing-time mission recap tache; do
+            test -f "plugins/outils-gf/commands/${commande}.md" || {
+              echo "Commande manquante : ${commande}.md"
+              exit 1
+            }
+          done
