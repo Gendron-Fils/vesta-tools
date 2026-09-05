@@ -1,11 +1,20 @@
 ---
 description: Cherche un sujet dans la mémoire évolutive (index plein-texte de Vesta), pour le repêchage au rituel de session
-argument-hint: [mots-clés ou sujet à repêcher]
+argument-hint: [2-3 mots-clés, OR entre synonymes, jamais une question]
 ---
 
 Tu cherches un sujet dans la mémoire évolutive de l'entreprise (le dépôt `vesta`), via son index plein-texte. Ça sert le rituel de repêchage : avant de bâtir sur un sujet, on retrouve les fils déjà au carnet, parce que le modèle est amnésique et qu'un `grep` rate un fil quand on ne devine pas le bon mot. L'index classe par pertinence (plein-texte Postgres, config française), bien mieux que la recherche de code GitHub, et il fonctionne même quand la session n'a pas le dépôt `vesta` cloné (le cas fréquent en session infonuagique scopée sur un dépôt d'outil).
 
 Le sujet à chercher est dans `$ARGUMENTS`. S'il est vide, demande quoi chercher en une ligne, puis arrête.
+
+## Comment formuler la requête
+
+L'index exige TOUS les mots de la requête dans un même passage (un ET implicite, `websearch_to_tsquery`). Une question ou une phrase complète (« qu'est-ce qu'on a décidé pour la tarification du produit X ») ne matche presque jamais un passage entier : elle rend une liste vide qui ressemble à un index injoignable, alors que le même sujet en deux ou trois mots-clés (« tarification produit X ») rend les bons fils.
+
+- Formule `$ARGUMENTS` en **deux ou trois mots-clés**, jamais une question ni une phrase complète.
+- Mets **`OR`** (majuscules) entre des synonymes ou des variantes du même sujet plutôt que de tout mettre dans une seule requête ET (« Danny Tremblay OR client Tremblay »).
+- Le sujet a plusieurs angles ? Lance **plusieurs requêtes courtes** l'une après l'autre plutôt qu'une seule requête longue qui les additionne toutes.
+- Depuis 2026-09, `/api/chercher` retente lui-même une fois en OU quand la requête ET rend zéro résultat (voir le champ `mode` plus bas) : un filet, pas une raison de revenir à la phrase complète.
 
 ## Comment chercher
 
@@ -31,7 +40,9 @@ curl -sS -X POST "https://vesta.gendronfils.ca/api/chercher" \
   --data "$(jq -nc --arg q "$ARGUMENTS" '{question:$q}')"
 ```
 
-La réponse est `{ "resultats": [ { "chemin": "...", "extrait": "..." }, ... ] }`, déjà classée du plus pertinent au moins.
+La réponse est `{ "resultats": [ { "chemin": "...", "extrait": "..." }, ... ], "mode": "et" | "ou", "requete_effective": "..." }`, les résultats déjà classés du plus pertinent au moins.
+
+`mode` dit si la requête ET d'origine a suffi (`"et"`) ou si l'index a dû élargir en OU parce que le ET rendait zéro résultat (`"ou"`, un `requete_effective` différent de ta requête d'origine). Un `mode: "ou"` est un résultat **dégradé** : dis-le à Philippe si tu t'en sers pour bâtir une réponse (« l'index a élargi la requête, il n'a rien trouvé pour les mots exacts »), et reformule en deux ou trois mots-clés plus ciblés la prochaine fois plutôt que de t'y fier par défaut.
 
 ## Quoi en faire
 
