@@ -26,9 +26,9 @@ jobs:
         run: |
           jq empty .claude-plugin/marketplace.json
           jq empty plugins/outils-gf/.claude-plugin/plugin.json
-      - name: Les 5 commandes maitres existent
+      - name: Les 6 commandes maitres existent
         run: |
-          for commande in chercher closing-time mission recap tache; do
+          for commande in chercher closing-time jazz mission recap tache; do
             test -f "plugins/outils-gf/commands/${commande}.md" || {
               echo "Commande manquante : ${commande}.md"
               exit 1
