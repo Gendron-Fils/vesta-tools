@@ -34,3 +34,8 @@ jobs:
               exit 1
             }
           done
+      - name: Le composeur PDF reMarkable se compile et rend le README
+        run: |
+          python3 -m py_compile scripts/md-vers-pdf-remarkable.py
+          python3 scripts/md-vers-pdf-remarkable.py --sortie /tmp/readme.pdf README.md
+          test -s /tmp/readme.pdf
