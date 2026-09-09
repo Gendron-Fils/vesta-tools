@@ -25,13 +25,12 @@ vesta-tools/
             └── jazz.md           # la commande /jazz
 ```
 
-Plus un dossier de skills, le second canal de distribution (voir plus bas) :
+Plus un dossier de skills, le canal qui va partout (voir plus bas) :
 
 ```
 vesta-tools/
 └── skills/
-    ├── chercher/SKILL.md         # pointeur vers commands/chercher.md
-    └── closing-time/SKILL.md     # pointeur vers commands/closing-time.md
+    └── chercher/SKILL.md         # pointeur vers commands/chercher.md
 ```
 
 - **Marketplace** : `gendron-tools`
@@ -96,12 +95,16 @@ jamais des copies** : leur corps dit d'aller lire `plugins/outils-gf/commands/<n
 d'exécuter la routine. Une seule source, aucune divergence possible, et la CI vérifie que le
 pointeur vise un fichier qui existe.
 
-Pourquoi seulement deux et pas les six : chaque skill de compte coûte sa description au
-démarrage de **chaque** session, sur toutes les surfaces, y compris celles où le plugin fait
-déjà la job (audit token du 2026-07-17). On ne paie ce coût que pour les commandes que Philippe
-tape lui-même sur une surface sans plugin : `/chercher` (le réflexe en ancrage, où l'erreur
-rouge déconditionne le geste) et `/closing-time`. Les autres sont couvertes par le filet de
-l'`AGENTS.md`.
+Pourquoi une seule et pas les six : chaque skill de compte coûte sa description au démarrage de
+**chaque** session, sur toutes les surfaces, y compris celles où le plugin fait déjà la job
+(audit token du 2026-07-17). On ne paie ce coût que là où le geste lui-même est en jeu, pas pour
+le confort. Un seul cas le justifie aujourd'hui : **`/chercher`**, parce que c'est un réflexe en
+ancrage et que l'erreur rouge déconditionne le geste au moment exact où Philippe le pratique.
+`/closing-time` avait été fait dans la même passe puis retiré le 2026-09-09, à sa demande : la
+commande est bien absente de ces surfaces elle aussi, mais la clôture se fait très bien par le
+filet, personne n'apprend un réflexe à ce moment-là, et un skill de moins est une description de
+moins payée à chaque démarrage. Toutes les autres commandes sont dans ce cas : le filet de
+l'`AGENTS.md` les couvre.
 
 **Le piège à surveiller : la copie qui dérive.** `/mission` existe dans les deux canaux depuis
 le 2026-05-29, et les deux ont divergé (le skill de compte est resté à la version d'avant le
@@ -116,6 +119,10 @@ fabriquer l'archive à téléverser :
 ```bash
 cd /chemin/vers/vesta-tools/skills && zip -r chercher.zip chercher
 ```
+
+Le critère avant d'en ajouter un : est-ce que Philippe tape cette commande LUI-MÊME sur une
+surface sans plugin, et est-ce que l'échec lui coûte autre chose qu'une seconde ? Si le filet
+suffit, le filet suffit.
 
 Une fois posé, le skill se synchronise tout seul vers les autres surfaces.
 
