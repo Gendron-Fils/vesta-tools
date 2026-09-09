@@ -61,6 +61,17 @@ scripts/sync-commands.sh             # recopie dans le .claude/commands/ des dé
 
 Le script recopie toutes les commandes de `outils-gf` vers le `.claude/commands/` des dépôts branchés (il trouve les dépôts à côté de `vesta-tools`, en local comme dans le nuage). La mémoire `vesta` est volontairement exclue (pointeur seulement). Elle est additive et idempotente : elle ajoute et met à jour, jamais ne supprime. Après coup, committer le `.claude/commands/` de chaque dépôt modifié et ouvrir une PR vers `main` (le script affiche la liste des dépôts touchés).
 
+## Le composeur PDF pour la reMarkable (script, hors plugin)
+
+`scripts/md-vers-pdf-remarkable.py` rend un ou plusieurs fichiers Markdown en un seul PDF au format exact de l'écran d'une reMarkable 2 (447 × 597 points), avec Chromium ou Chrome sans tête. Aucune dépendance Python ; il trouve le navigateur tout seul (Playwright dans le nuage, Chrome sur Windows ou macOS, sinon `CHROMIUM_BIN` ou `--chromium CHEMIN`). C'est un script, pas une commande du plugin : une session l'appelle depuis le clone de `vesta-tools`.
+
+```bash
+python3 scripts/md-vers-pdf-remarkable.py --sortie sortie.pdf document.md
+python3 scripts/md-vers-pdf-remarkable.py --sortie sortie.pdf --suivre-liens --titre-annexe "Les fiches liées" edition.md
+```
+
+`--suivre-liens` ajoute en annexe, une fois chacun, les fichiers `.md` locaux que le document lie ; `--bandeau` pose une ligne en tête ; `--html` garde le HTML intermédiaire pour déboguer. Le rendu vise l'encre : sérif, noir pur, marges franches, titres qui ne se séparent pas de leur paragraphe. Il n'imprime que des chemins et des comptes, jamais de contenu.
+
 ## Voix et règle d'or
 
 Français québécois, pas de tiret cadratin dans la prose. **Public : aucun secret, aucun contenu propriétaire.** Si un outil aurait besoin d'un secret ou de contenu d'un client, il n'a pas sa place ici.
