@@ -25,6 +25,15 @@ vesta-tools/
             └── jazz.md           # la commande /jazz
 ```
 
+Plus un dossier de skills, le second canal de distribution (voir plus bas) :
+
+```
+vesta-tools/
+└── skills/
+    ├── chercher/SKILL.md         # pointeur vers commands/chercher.md
+    └── closing-time/SKILL.md     # pointeur vers commands/closing-time.md
+```
+
 - **Marketplace** : `gendron-tools`
 - **Plugin** : `outils-gf`
 - **Référence d'un dépôt** vers le plugin : `outils-gf@gendron-tools`
@@ -60,6 +69,55 @@ scripts/sync-commands.sh             # recopie dans le .claude/commands/ des dé
 ```
 
 Le script recopie toutes les commandes de `outils-gf` vers le `.claude/commands/` des dépôts branchés (il trouve les dépôts à côté de `vesta-tools`, en local comme dans le nuage). La mémoire `vesta` est volontairement exclue (pointeur seulement). Elle est additive et idempotente : elle ajoute et met à jour, jamais ne supprime. Après coup, committer le `.claude/commands/` de chaque dépôt modifié et ouvrir une PR vers `main` (le script affiche la liste des dépôts touchés).
+
+## Trois canaux de distribution (et lequel va partout)
+
+Une commande de la boîte peut atteindre une session par trois chemins, et **un seul des trois
+va partout** :
+
+| Canal | Où ça vit | Surfaces couvertes |
+|---|---|---|
+| Plugin `outils-gf` | le `settings.json` de la machine | **app de bureau seulement** |
+| Copie vendorisée | le `.claude/commands/` d'un dépôt d'outil | **sessions infonuagiques de CE dépôt** |
+| Skill de compte | le compte claude.ai | **partout** : mobile, infonuagique, bureau |
+
+Le `settings.json` d'une machine ne monte pas dans un conteneur infonuagique, et la mémoire
+`vesta` ne vendorise rien (elle reste pointeur seulement). Une session mobile ou infonuagique
+ouverte sur `vesta` n'expose donc **aucune** commande du plugin : elle rend `Unknown command`.
+
+Le filet existe déjà et il est automatique : l'`AGENTS.md` de `vesta` instruit toute session de
+lire la définition maîtresse ici et de l'exécuter. **La définition est le contrat, le slash
+n'est que le raccourci.** Le filet fait le travail, mais il ne fait pas disparaître l'erreur
+rouge que Philippe voit quand il tape la commande.
+
+D'où le dossier `skills/` : pour les commandes que Philippe tape lui-même sur mobile, un skill
+de compte porte le nom de la commande sur toutes les surfaces. **Ces skills sont des pointeurs,
+jamais des copies** : leur corps dit d'aller lire `plugins/outils-gf/commands/<nom>.md` et
+d'exécuter la routine. Une seule source, aucune divergence possible, et la CI vérifie que le
+pointeur vise un fichier qui existe.
+
+Pourquoi seulement deux et pas les six : chaque skill de compte coûte sa description au
+démarrage de **chaque** session, sur toutes les surfaces, y compris celles où le plugin fait
+déjà la job (audit token du 2026-07-17). On ne paie ce coût que pour les commandes que Philippe
+tape lui-même sur une surface sans plugin : `/chercher` (le réflexe en ancrage, où l'erreur
+rouge déconditionne le geste) et `/closing-time`. Les autres sont couvertes par le filet de
+l'`AGENTS.md`.
+
+**Le piège à surveiller : la copie qui dérive.** `/mission` existe dans les deux canaux depuis
+le 2026-05-29, et les deux ont divergé (le skill de compte est resté à la version d'avant le
+dégraissage de la 0.12.0). C'est exactement ce que la forme pointeur évite. Un skill de compte
+qui recopie une routine est une dérive en attente.
+
+### Poser ou mettre à jour un skill de compte
+
+Le téléversement est un geste manuel de Philippe (claude.ai, Réglages, Capacités, Skills). Pour
+fabriquer l'archive à téléverser :
+
+```bash
+cd /chemin/vers/vesta-tools/skills && zip -r chercher.zip chercher
+```
+
+Une fois posé, le skill se synchronise tout seul vers les autres surfaces.
 
 ## Le composeur PDF pour la reMarkable (script, hors plugin)
 

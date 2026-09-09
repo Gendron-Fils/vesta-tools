@@ -34,6 +34,15 @@ jobs:
               exit 1
             }
           done
+      - name: Les skills de compte pointent vers une commande maitresse existante
+        run: |
+          for skill in skills/*/SKILL.md; do
+            test -f "$skill" || continue
+            cible=$(grep -o 'plugins/outils-gf/commands/[a-z-]*\.md' "$skill" | head -1)
+            test -n "$cible" || { echo "Skill sans pointeur : $skill"; exit 1; }
+            test -f "$cible" || { echo "Pointeur casse dans $skill : $cible"; exit 1; }
+            echo "OK $skill -> $cible"
+          done
       - name: Le composeur PDF reMarkable se compile et rend le README
         run: |
           python3 -m py_compile scripts/md-vers-pdf-remarkable.py
