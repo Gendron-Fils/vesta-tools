@@ -30,7 +30,8 @@ Plus un dossier de skills, le canal qui va partout (voir plus bas) :
 ```
 vesta-tools/
 └── skills/
-    └── chercher/SKILL.md         # pointeur vers commands/chercher.md
+    ├── chercher/SKILL.md         # pointeur vers commands/chercher.md
+    └── mission/SKILL.md          # pointeur vers commands/mission.md
 ```
 
 - **Marketplace** : `gendron-tools`
@@ -95,16 +96,21 @@ jamais des copies** : leur corps dit d'aller lire `plugins/outils-gf/commands/<n
 d'exécuter la routine. Une seule source, aucune divergence possible, et la CI vérifie que le
 pointeur vise un fichier qui existe.
 
-Pourquoi une seule et pas les six : chaque skill de compte coûte sa description au démarrage de
+Pourquoi deux et pas les six : chaque skill de compte coûte sa description au démarrage de
 **chaque** session, sur toutes les surfaces, y compris celles où le plugin fait déjà la job
 (audit token du 2026-07-17). On ne paie ce coût que là où le geste lui-même est en jeu, pas pour
-le confort. Un seul cas le justifie aujourd'hui : **`/chercher`**, parce que c'est un réflexe en
-ancrage et que l'erreur rouge déconditionne le geste au moment exact où Philippe le pratique.
-`/closing-time` avait été fait dans la même passe puis retiré le 2026-09-09, à sa demande : la
-commande est bien absente de ces surfaces elle aussi, mais la clôture se fait très bien par le
-filet, personne n'apprend un réflexe à ce moment-là, et un skill de moins est une description de
-moins payée à chaque démarrage. Toutes les autres commandes sont dans ce cas : le filet de
-l'`AGENTS.md` les couvre.
+le confort. Deux cas le justifient :
+
+- **`/chercher`** (posé le 2026-09-09) : c'est un réflexe en ancrage, et l'erreur rouge
+  déconditionne le geste au moment exact où Philippe le pratique.
+- **`/mission`** (converti le 2026-09-10) : le skill existait déjà, mais en COPIE depuis le
+  2026-05-29 ; il n'est pas ajouté ici, il est remis en pointeur pour tuer la dérive.
+
+`/closing-time` avait été fait dans la même passe que `/chercher` puis retiré le 2026-09-09, à la
+demande de Philippe : la commande est bien absente de ces surfaces elle aussi, mais la clôture se
+fait très bien par le filet, personne n'apprend un réflexe à ce moment-là, et un skill de moins
+est une description de moins payée à chaque démarrage. Les autres commandes sont dans ce cas : le
+filet de l'`AGENTS.md` les couvre.
 
 **Le piège à surveiller : la copie qui dérive.** `/mission` existe dans les deux canaux depuis
 le 2026-05-29, et les deux ont divergé (le skill de compte est resté à la version d'avant le
@@ -113,8 +119,12 @@ qui recopie une routine est une dérive en attente.
 
 ### Poser ou mettre à jour un skill de compte
 
-Le téléversement est un geste manuel de Philippe (claude.ai, Réglages, Capacités, Skills). Pour
-fabriquer l'archive à téléverser :
+Le téléversement est un geste manuel de Philippe (claude.ai, Réglages, Capacités, Skills).
+**Quand un skill du même nom existe déjà, retirer l'ancien AVANT de poser le nouveau**, sinon
+deux skills homonymes peuvent cohabiter. Le repli pendant l'opération est sûr : le plugin
+continue de servir la commande au bureau, et le filet de l'`AGENTS.md` la couvre ailleurs.
+
+Pour fabriquer l'archive à téléverser :
 
 ```bash
 cd /chemin/vers/vesta-tools/skills && zip -r chercher.zip chercher
