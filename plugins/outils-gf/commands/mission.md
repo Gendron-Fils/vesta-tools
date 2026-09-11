@@ -16,10 +16,21 @@ Français québécois, factuel, pas de tiret cadratin dans la prose.
 Repère le fichier d'ordre désigné. S'il vit dans un autre dépôt ou sur une autre branche que la session courante, va l'y chercher (tire le dépôt au besoin) avant de commencer. Chemin introuvable ou ambigu : arrête-toi et demande, plutôt que d'inventer une mission.
 
 ### 2. Charge le contexte et le persona
-Avant d'agir, lis ce que la mission te dit de lire et adopte le persona de développement du dépôt s'il en définit un : sa charte de firme, ses conventions dans le `CLAUDE.md`, la mémoire versionnée qu'il référence. L'ordre de mission est la source : son modèle recommandé, son périmètre, ses garde-fous et sa définition de « fini » priment. Tu t'adaptes à l'état réel du dépôt sur sa branche, jamais l'inverse.
+Avant d'agir, lis ce que la mission te dit de lire et adopte le persona de développement du dépôt s'il en définit un : sa charte de firme, ses conventions dans le `CLAUDE.md`, la mémoire versionnée qu'il référence. L'ordre de mission est la source : son périmètre, ses garde-fous et sa définition de « fini » priment. Tu t'adaptes à l'état réel du dépôt sur sa branche, jamais l'inverse.
+
+Le modèle recommandé par l'ordre est un INSTANTANÉ de sa rédaction, pas un fait du jour. Relève ce que ta session utilise vraiment et compare-le à ce que l'ordre nomme ; un écart se signale à l'humain, jamais ne se comble par une substitution silencieuse. Quand les instructions du dépôt ou de sa mémoire portent une politique de sélection d'agent, c'est elle qui gouverne le cas d'un ordre ancien : lis-la là où elle vit plutôt que de trancher de tête.
 
 ### 3. Marque le départ (la carte passe en cours)
-Si un item de tâche t'a lancé (ton prompt le nomme, même mécanique que la fermeture de l'étape 5), flippe-le `Statut : en cours depuis le AAAA-MM-DD` (la date du jour), avec une ligne `Session : <lien de la session courante>` quand ce lien est connaissable (en session infonuagique, il figure dans les instructions du harnais ; en local, omets la ligne). Fais ce flip dans TON PREMIER commit mémoire de la mission, avant de plonger dans le reste : c'est ce qui rend le travail visible au tableau de l'humain pendant qu'il roule, plutôt que de laisser la carte dire encore « à faire » jusqu'à la fin. Réservé aux items `Type : action` ; n'y touche jamais pour un item de validation. Sans item de lancement identifiable, saute cette étape sans y revenir.
+Retrouve la carte qui t'a lancé, des DEUX façons, exactement comme la fermeture de l'étape 5 (une carte que la fin sait retrouver, le début doit savoir la retrouver aussi, sinon le départ reste invisible) :
+
+1. **ton prompt la nomme** : c'est l'identité explicite, la plus sûre ;
+2. **un item ouvert de la file porte un `## Prompt de lancement` qui vise EXACTEMENT ce fichier d'ordre** : même repêchage qu'à l'étape 5.
+
+Puis flippe-la `Statut : en cours depuis le AAAA-MM-DD` (la date du jour), avec une ligne `Session : <lien de la session courante>` quand ce lien est connaissable (en session infonuagique, il figure dans les instructions du harnais ; en local, omets la ligne). Fais ce flip dans TON PREMIER commit mémoire de la mission, avant de plonger dans le reste : c'est ce qui rend le travail visible au tableau de l'humain pendant qu'il roule, plutôt que de laisser la carte dire encore « à faire » jusqu'à la fin. Réservé aux items `Type : action` ; n'y touche jamais pour un item de validation.
+
+Même prudence qu'à la fermeture, parce qu'un mauvais flip écrit dans la mémoire de quelqu'un d'autre : on vise par identité, jamais par ressemblance de titre. Plusieurs candidats, aucun accès à la file, ou aucune preuve que la carte vise bien CET ordre : dis la limite et demande si c'est nécessaire, ne flippe rien au hasard. Sans carte identifiable, saute cette étape sans y revenir.
+
+Et le geste compte, pas l'intention : copier un prompt de lancement n'est pas un départ. Tant que rien n'est écrit dans la carte, le tableau de l'humain a raison de dire « à faire ».
 
 ### 4. Exécute au complet
 Suis la mission de bout en bout, dans l'ordre qu'elle pose (le risque le plus haut d'abord si elle le demande). Respecte la discipline du dépôt : worktree et PR quand c'est la règle, commits clairs (conventional commits avec le trailer prévu), migrations additives et idempotentes, jamais de destructif sans autorisation. Un secret dans le diff bloque tout. Quand la mission tranche déjà une décision, applique-la ; quand une vraie ambiguïté hors périmètre surgit, expose le risque et demande avant d'agir.
@@ -48,6 +59,8 @@ Un ordre autoportant porte, dans la voix et les conventions du dépôt :
 - **la définition de « fini »**, et **la rétrospective à déposer à la fin**.
 
 Embarque verbatim tout contexte que l'agent ne pourra pas voir autrement (le pont entre la conversation et le dépôt). Ajoute la traçabilité (préparé par qui, quand) et le modèle recommandé (effort, niveau de risque).
+
+**Avant de figer ce combo, lis la politique de sélection d'agent là où elle vit** (les instructions du dépôt, ou la mémoire qu'elles désignent) et l'inventaire réellement disponible à l'humain. Cette commande est publique : elle pointe la règle, elle ne la recopie pas, et elle ne porte ni catalogue d'agents ni préférence de personne. Ce que l'ordre écrit ensuite, c'est la recommandation ET ses raisons (pourquoi ce candidat plutôt que tel autre, ce qui reste incertain), pour qu'elle reste discutable. Aucune politique lisible : dis-le dans l'ordre et propose le combo comme une hypothèse à confirmer, plutôt que de le poser comme une décision.
 
 ### 3. Sauvegarde et committe
 Dépose le fichier à l'endroit conventionnel du dépôt pour les ordres de mission (un dossier `prompts/` ou l'équivalent), sous un nom descriptif, et committe-le. Si la convention n'existe pas, propose l'emplacement plutôt que d'inventer en silence.
