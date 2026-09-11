@@ -25,7 +25,7 @@ L'index vit dans `vesta-app`, exposé par l'endpoint `POST https://vesta.gendron
 
 Résolution des secrets, dans cet ordre :
 
-1. **Variables d'environnement** (le canal des sessions infonuagiques : posées dans la config de l'environnement Claude Code, valeurs maîtres dans Doppler) : `VESTA_CHERCHER_TOKEN` et `VERCEL_AUTOMATION_BYPASS_SECRET`.
+1. **Variables d'environnement** (le canal des sessions infonuagiques : posées dans la config de l'environnement Claude Code, valeurs maîtres dans les variables d'environnement du projet Vercel) : `VESTA_CHERCHER_TOKEN` et `VERCEL_AUTOMATION_BYPASS_SECRET`.
 2. **Repli local** (machine de Philippe) : les fichiers `.secrets/vesta-chercher-token.txt` et `.secrets/vesta-vercel-bypass.txt` du dossier Gendron & Fils.
 
 Lis-les depuis bash et utilise-les directement dans la commande `curl`, sans les faire transiter par le chat :
